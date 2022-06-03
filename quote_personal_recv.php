@@ -3,6 +3,7 @@
     error_reporting( E_ALL );
     ini_set( "display_errors", 1 );
 
+
  
     $files= $_FILES['input_file'];
 
@@ -13,7 +14,7 @@
 
     
     //요청 서버 URL 셋팅 
-    $url = "http://172.19.88.20:8081/assessment"; 
+    $url = "http://172.19.88.25:8081/assessment"; 
     //추가할 헤더값이 있을시 추가하면 됨 
     $headers = array( "content-type: application/json", "accept-encoding: gzip" ); 
     //POST방식으로 보낼 JSON데이터 생성 
@@ -101,27 +102,31 @@
     </div>
     </section> <br><br>
     <center>
-        <div id="resultTable" style="width:80%; height:1000px; overflow:auto">
+        <div id="honeyTip">
+            <h4> 오늘의 꿀팁! </h4>
+            <br>
+            <span></span>
+        </div>
+        <div class="resultTable" style="width:80%; height:1000px; overflow:auto">
         <table style="width:80%;" border="1">
             <tr>
-                <th>이미지</th>
-                <th>파일명</th>
-                <th>파손여부</th>
+                <th style="text-align: center;">파손 결과 보기</th>
             </tr>
             <?php
                 for($i = 0; $i < count($json_data); $i++){
                     $img_path = $filename[$i];
                     ?>
-                    <tr>
-                        <td><img style="width:50px; height:40px;" id="result" src=<?=$img_path?>></td>
-                        <td><label> <?php echo $files['name'][$i]; ?></label></td>
-                        <td><label> 
+                    <tr onclick="image_popup_All(this);">
+                        <td><img id="result" src=<?=$img_path?>>
+                        <label> 파일명 : <?php echo $files['name'][$i]; ?></label>
+                        <br>
+                        <label> 파손 여부 :
                             <?php if($json_data[$i] == '1'){
                                 echo "Damaged";
                                 $damagedSrc[$i] = $filename[$i];
                                 $damagedName[$i] = $files['name'][$i];
                                 $damagedNum++;
-                        } else{echo "Clear";}?> </label></td>
+                        } else{echo "Clear";}?> </label>
                     </tr>
                     <?php
                 }
@@ -129,6 +134,21 @@
         </table>
         </div>
     </center>
+    <script>
+        function image_popup_All(tr) {
+                var imgObj = new Image();
+                var index = tr.rowIndex - 1;
+                var imglist = '<?php echo json_encode($filename); ?>';
+                var imgSrc = JSON.parse(imglist);
+                imgObj.src = imgSrc[index];
+                imageWin = window.open("", "profile_popup", "width=" + imgObj.width + "px, height=" + imgObj.height + "px");
+                imageWin.document.write("<html><body style='margin:0'>");
+                imageWin.document.write("<a href=javascript:window.close()><img src='" + imgObj.src + "' border=0></a>");
+                imageWin.document.write("</body><html>");
+                imageWin.document.title = imgObj.src;
+            }
+    </script>
+    <script src="./js/honeyTips.js"></script>
     <footer class="footerG">
     <?php include "footer.php";?>
     </footer>

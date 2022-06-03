@@ -12,8 +12,8 @@
     $damagedNum = 0;
 
     
-    //요청 서버 URL 셋팅 
-    $url = "http://172.19.98.84:8081/assessment"; 
+    //요청 서버 URL 셋팅
+    $url = "http://172.19.88.25:8081/assessment";
     //추가할 헤더값이 있을시 추가하면 됨 
     $headers = array( "content-type: application/json", "accept-encoding: gzip" ); 
     //POST방식으로 보낼 JSON데이터 생성 
@@ -74,6 +74,12 @@
     $result_data = array();
 
     for($i=0; $i<$fileNum;$i++){
+        if($json_data[$i]=="1"){
+            $damagedSrc[$damagedNum] = $arr_post[$i];
+            $damagedName[$damagedNum] = $files['name'][$i];
+            $damagedSrc[$damagedNum] = $filename[$i];
+            $damagedNum++;
+        }
         $result_data[$files['name'][$i]] = $json_data[$i];
     }
     $result_jsondata = json_encode($result_data);
@@ -116,6 +122,9 @@
             <br>
             <label>파손 이미지 수 : <?php echo $damagedNum?></label>
         </div>
+        <div id="resultImg" style="padding-bottom: 70px;">
+            <img src="./img/result.png">
+        </div>
         <div class="resultTable" id="allRet" style="width:80%; height:1000px; overflow:auto">
         <table style="width:80%;" border="1">
             <tr>
@@ -127,15 +136,12 @@
                 for($i = 0; $i < count($json_data); $i++){
                     $img_path = $filename[$i];
                     ?>
-                    <tr>
+                    <tr onclick="image_popup_All(this);">
                         <td><img style="width:50px; height:40px;" id="result" src=<?=$img_path?>></td>
                         <td><label> <?php echo $files['name'][$i]; ?></label></td>
                         <td><label> 
                             <?php if($json_data[$i] == '1'){
                                 echo "Damaged";
-                                $damagedSrc[$damagedNum] = $filename[$i];
-                                $damagedName[$damagedNum] = $files['name'][$i];
-                                $damagedNum++;
                         } else{echo "Clear";}?> </label></td>
                     </tr>
                     <?php
@@ -149,7 +155,7 @@
             <h3>파손 이미지만 보기</h3>
         </div>
         <div class="resultTable" id="damagedRet" style="width:80%; height:1000px; overflow:auto">
-        <table style="width:80%;" border="1">
+        <table style="width:auto;" border="1">
             <tr>
                 <th>이미지</th>
                 <th>파일명</th>
@@ -158,7 +164,7 @@
             <?php
                 for($i = 0; $i < count($damagedSrc); $i++){
                     ?>
-                    <tr>
+                    <tr onclick="image_popup_Damaged(this);">
                         <td><img style="width:300px; height:280px;" id="result" src=<?=$damagedSrc[$i]?>></td>
                         <td><label> <?php echo $damagedName[$i];?></label></td>
                         <td><label> Damaged </label></td>
@@ -182,12 +188,36 @@
                 element.click();
                 //document.body.removeChild(element);
             }
-                document.querySelector("#ret_down")    
+                document.querySelector("#ret_down")
                   .addEventListener("click", function () {
                         var text = "<?=$dst_path?>";
                         var filename = <?=$result_jsondata?>;
                         download(filename, text);
             }, false);
+            function image_popup_All(tr) {
+                var imgObj = new Image();
+                var index = tr.rowIndex - 1;
+                var imglist = '<?php echo json_encode($filename); ?>';
+                var imgSrc = JSON.parse(imglist);
+                imgObj.src = imgSrc[index];
+                imageWin = window.open("", "profile_popup", "width=" + imgObj.width + "px, height=" + imgObj.height + "px");
+                imageWin.document.write("<html><body style='margin:0'>");
+                imageWin.document.write("<a href=javascript:window.close()><img src='" + imgObj.src + "' border=0></a>");
+                imageWin.document.write("</body><html>");
+                imageWin.document.title = imgObj.src;
+            }
+            function image_popup_Damaged(tr) {
+                var imgObj = new Image();
+                var index = tr.rowIndex - 1;
+                var imglist = '<?php echo json_encode($damagedSrc); ?>';
+                var imgSrc = JSON.parse(imglist);
+                imgObj.src = imgSrc[index];
+                imageWin = window.open("", "profile_popup", "width=" + imgObj.width + "px, height=" + imgObj.height + "px");
+                imageWin.document.write("<html><body style='margin:0'>");
+                imageWin.document.write("<a href=javascript:window.close()><img src='" + imgObj.src + "' border=0></a>");
+                imageWin.document.write("</body><html>");
+                imageWin.document.title = imgObj.src;
+            }
         </script>
     </center>
     <script> initTable(); </script>

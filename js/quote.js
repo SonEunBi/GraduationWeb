@@ -176,6 +176,7 @@ function showResult(){
     allRet[1].style.display = "none";
     damagedRet[0].style.display = "none";
     damagedRet[1].style.display = "";
+    document.querySelector("#resultImg").style.display = "none";
 }
 // 파손 이미지만 출력 함수
 function showDamagedResult(){
@@ -185,6 +186,7 @@ function showDamagedResult(){
     allRet[1].style.display = "";
     damagedRet[0].style.display = "";
     damagedRet[1].style.display = "none";
+    document.querySelector("#resultImg").style.display = "none";
 }
 
 function initTable(){

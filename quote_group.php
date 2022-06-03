@@ -41,10 +41,12 @@ set_time_limit(0);
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <form name="uploadForm" action="./quote_group_recv.php" id="uploadForm" method="POST" enctype="multipart/form-data">
   <div id="dropZone">
-    <img width="130px" height="110px" id="quote_img" src="./img/upload-files.png">
-    <div>
-      <label>Drop images to upload</label>
-    </div>
+      <div id="inDropZone">
+        <img width="130px" height="110px" id="quote_img" src="./img/upload-files.png">
+        <div>
+          <label>Drop images to upload</label>
+        </div>
+      </div>
   </div>
   <input type="file" id="input_file" name="input_file[]" multiple style="left: 100px;" hidden>
   <input type="button" id="submit_file" onclick="uploadFile(); return false;" style = "display:none"/>

@@ -66,13 +66,17 @@ div.guide{
     margin-top: 560px;
 }
 #dropZone{
-  position: flex; justify-content: center;
+  display: flex;
+  align-items: center;
   text-align: center;
   width: 50%;
   height: 300px;
   border-style: dashed;
   border-color: gray;
   margin-bottom: 70px;
+}
+#inDropZone{
+  margin: auto;
 }
 .table{
   margin-top: 70px;
@@ -84,7 +88,33 @@ label{
 #quote_img{
   -webkit-user-drag: none;
 }
-.resultTable{
+.resultTable table{
+  text-align: center;
+}
+.resultTable {
   margin-top: 70px;
   margin-bottom: 70px;
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  border-radius: 10px;
+}
+
+.resultTable td, .resultTable th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.resultTable tr:nth-child(even){background-color: #f2f2f2;}
+
+.resultTable tr:hover {background-color: #ddd;}
+
+.resultTable th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #352e4b;
+  color: white;
+}
+#resultBox{
+  font-size: 17px;
 }
