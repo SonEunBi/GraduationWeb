@@ -3,7 +3,7 @@
 <html>
 <head> 
   <meta charset="utf-8">
-  <title>EB공공도서관</title>
+  <title>부셔진 차</title>
   <link rel="stylesheet" type="text/css" href="./css/common.css">
   <link rel="stylesheet" type="text/css" href="./css/board.css">
 
@@ -14,7 +14,7 @@
   </header>  
   <div id="board_box"> 
     <h1 id="board_title"></h1>
-    <h3>견적 정보 문의</h3>
+    <h3>견적 정보 공유</h3>
 
   </div>
 
@@ -55,7 +55,7 @@
     
   <div class="search" style="height: 100px; margin-top: 17px;">
     <br><br> <center>
-      <form method="post" action="book_list.php" style="float=center;">
+      <form method="post" action="share_board_list.php" style="float=center;">
        <select name="catgo">
             <option>-선택-</option>
             <option value="all">전체</option>
@@ -95,7 +95,7 @@
 		$page = 1;
 
 	$con = mysqli_connect("localhost", "user1", "12345", "sample");
-	$sql = "select * from inquiryboard order by num desc";
+	$sql = "select * from board order by num desc";
 	$result = mysqli_query($con, $sql);
 	$total_record = mysqli_num_rows($result); // 전체 글 수
 
@@ -122,7 +122,6 @@
 	  $id          = $row["id"];
 	  $name        = $row["name"];
 	  $subject     = $row["subject"];
-      $cartype     = $row["cartype"];
       $regist_day  = $row["regist_day"];
       $hit         = $row["hit"];
       if ($row["file_name"])
@@ -132,9 +131,9 @@
 ?>
 				<li>
 					<span class="col1"><?=$number?></span>
-					<span class="col2"><a href="inquiry_board_view.php?num=<?=$num?>&page=<?=$page?>"><?=$subject?></a></span>
+					<span class="col2"><a href="board_view.php?num=<?=$num?>&page=<?=$page?>"><?=$subject?></a></span>
 					<span class="col3"><?=$name?></span>
-					<span class="col4"><?=$cartype?></span>
+					<span class="col4"><?=$file_image?></span>
 					<span class="col5"><?=$regist_day?></span>
 					<span class="col6"><?=$hit?></span>
 				</li>	
@@ -150,7 +149,7 @@
 	if ($total_page>=2 && $page >= 2)	
 	{
 		$new_page = $page-1;
-		echo "<li><a href='inquiry_board_list.php?page=$new_page'>◀ 이전</a> </li>";
+		echo "<li><a href='board_list.php?page=$new_page'>◀ 이전</a> </li>";
 	}		
 	else 
 		echo "<li>&nbsp;</li>";
@@ -164,43 +163,25 @@
 		}
 		else
 		{
-			echo "<li><a href='inquiry_board_list.php?page=$i'> $i </a><li>";
+			echo "<li><a href='board_list.php?page=$i'> $i </a><li>";
 		}
    	}
    	if ($total_page>=2 && $page != $total_page)		
    	{
 		$new_page = $page+1;	
-		echo "<li> <a href='inquiry_board_list.php?page=$new_page'>다음 ▶</a> </li>";
+		echo "<li> <a href='board_list.php?page=$new_page'>다음 ▶</a> </li>";
 	}
 	else 
 		echo "<li>&nbsp;</li>";
 ?>
 			</ul> <!-- page -->	    	
 			<ul class="buttons">
-				<li><button onclick="location.href='inquiry_board_list.php'"
-                              style=" width: 72px;
-                               font-size:15px;
-                               font-family: 'Nanum Gothic';
-                               color: #d4d5d9;
-                               line-height: 25px;
-                               text-align: center;
-                               background: #333f50;
-                               border: solid 1px#333f50;
-                               border-radius: 12px;">목록</button></li>
+				<li><button onclick="location.href='share_board_list.php'">목록</button></li>
 				<li>
 <?php 
     if($userid) {
 ?>
-					<button onclick="location.href='inquiry_board_form.php'"
-                       style=" width: 72px;
-                       font-size:15px;
-                       font-family: 'Nanum Gothic';
-                       color: #d4d5d9;
-                       line-height: 25px; 
-                       text-align: center;
-                       background: #333f50;
-                       border: solid 1px#333f50;
-                       border-radius: 12px;">글쓰기</button>
+					<button onclick="location.href='share_board_form.php'">글쓰기</button>
 <?php
 	} else {
 ?>
@@ -211,6 +192,13 @@
 				</li>
 			</ul>
 	</div> <!-- board_box -->
+
+      
+    
+    
+    
+    
+    
 
         <div>
           <h3 id="board_title"></h3>  

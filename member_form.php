@@ -2,7 +2,7 @@
 <html>
 <head> 
 <meta charset="utf-8">
-<title>EB공공도서관</title>
+<title>부셔진 차</title>
 <link rel="stylesheet" type="text/css" href="./css/common.css">
 <link rel="stylesheet" type="text/css" href="./css/member.css">
 <script>
@@ -78,20 +78,28 @@
     	<?php include "header.php";?>
     </header>
 	<section>
-            <center><img src="./img/main2.png"></center>
+        <br><br><br><br>
         <div id="main_content">
       		<div id="join_box">
           	<form  name="member_form" method="post" action="member_insert.php">
-			    <h2>회원 가입</h2>
+			    <h2><span style='color:#7c7c7d'>회원 가입</h2>
     		    	<div class="form id">
 				        <div class="col1">아이디</div>
 				        <div class="col2">
 							<input type="text" name="id">
 				        </div>  
-				        <div class="col3">
-				        	<a href="#"><img src="./img/check_id.gif" 
-				        		onclick="check_id()"></a>
-				        </div>                 
+				        <div class="button">
+						     <button type="button" onclick="check_id()" style=" 
+                              width: 72px;
+                              font-size:14px;
+                              font-family: 'Nanum Gothic';
+                              color: #d4d5d9;
+                              line-height: 25px;
+                              text-align: center;
+                              background: #333f50;
+                              border: solid 1px#333f50;
+                              border-radius: 12px;">중복확인</button>
+											</div>                
 			       	</div>
 			       	<div class="clear"></div>
 
@@ -125,9 +133,29 @@
 			       	<div class="clear"></div>
 			       	<div class="bottom_line"> </div>
 			       	<div class="buttons">
-	                	<img style="cursor:pointer" src="./img/button_save.gif" onclick="check_input()">&nbsp;
-                  		<img id="reset_button" style="cursor:pointer" src="./img/button_reset.gif"
-                  			onclick="reset_form()">
+	                   <button type="button" onclick="check_input()"style="
+                              width: 72px;
+                              font-size:14px;
+                              font-family: 'Nanum Gothic';
+                              color: #d4d5d9;
+                              line-height: 25px;
+                              text-align: center;
+                              background: #333f50;
+                              border: solid 1px#333f50;
+                              border-radius: 12px;">저장하기</button>&nbsp;
+                       <button type="button" onclick="reset_form()"style=" 
+                              width: 72px;
+                              font-size:14px;
+                              font-family: 'Nanum Gothic';
+                              color: #d4d5d9;
+                              line-height: 25px;
+                              text-align: center;
+                              background: #333f50;
+                              border: solid 1px#333f50;
+                              border-radius: 12px;">취소하기</button> 
+
+
+                        
 	           		</div>
            	</form>
         	</div> <!-- join_box -->

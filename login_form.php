@@ -2,7 +2,7 @@
 <html>
 <head> 
 <meta charset="utf-8">
-<title>EB공공도서관</title>
+<title>부셔진 차</title>
 <link rel="stylesheet" type="text/css" href="./css/common.css">
 <link rel="stylesheet" type="text/css" href="./css/login.css">
 <script type="text/javascript" src="./js/login.js"></script>
@@ -13,8 +13,7 @@
     </header>
 	<section>
 <section>
-  <!-- <div id="main_img_bar"> -->
-        <center><img src="./img/main2.png"></center>
+    <br><br><br><br>
         </div>
         <div id="main_content">
       		<div id="login_box">

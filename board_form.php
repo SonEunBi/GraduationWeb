@@ -29,31 +29,32 @@
 <body> 
     <header>
         <?php include "header.php";?>
-        <br><br><br><br><br><br><br>
+        <br><br><br>
     </header>  
+        <br>
     <section>
 
     </div>
     <div id="board_box">
-       <h3 id="board_title">
-         게시판 > 글 쓰기
+       <h3 id="board_title" style="font-size: 25px; text-align:center;" >
+         견적 공유  >  글 쓰기
      </h3>
 
 
      <form  name="board_form" method="post" action="board_insert.php" enctype="multipart/form-data">
        <ul id="board_form">
         <li>
-           <span class="col1">이름 : </span>
-           <span class="col2"><?=$username?></span>
+           <span class="col1" style="font-size : 17px">이름 : </span>
+           <span class="col2"style="font-size : 15px"><?=$username?></span>
        </li>      
        <li>
-        <span class="col1">제목 : </span>
-        <span class="col2"><input name="subject" type="text"></span>
+        <span class="col1"style="font-size : 17px">제목 : </span>
+        <span class="col2"style="font-size : 15px"><input name="subject" type="text"></span>
     </li>   
     <li>
-        <span class="col1">부품 : </span>
+        <span class="col1"style="font-size : 17px">부품 : </span>
 
-        <span class="col2">
+        <span class="col2"style="font-size : 15px">
             <select name="partname" >
 
                 <option>-선택-</option>
@@ -80,8 +81,8 @@
         </span>
     </li>   
     <li>
-        <span class="col1">차종 : </span>
-        <span class="col2">
+        <span class="col1"style="font-size : 17px">차종 : </span>
+        <span class="col2"style="font-size : 15px">
             <select name="cartype" >
 
                 <option>-선택-</option>
@@ -109,11 +110,12 @@
     </li>   
 
     <li>
-        <span class="col1">장소: </span>
-        <span class="col2">
+        <span class="col1"style="font-size : 17px">장소 : </span>
+        <span class="col2"style="font-size : 15px">
             <form name="location">
 <!-- onChange="cat1_change(this.value,h_area2)" -->
-                <select name="location"  >
+          
+                 <select name="location"  >
 
                     <option>-선택-</option>
 
@@ -156,26 +158,46 @@
         </li>
 
         <li>
-            <span class="col1">가격: </span>
-            <span class="col2"><input name="price" type="text"></span>
+            <span class="col1"style="font-size : 17px">가격 : </span>
+            <span class="col2"style="font-size : 15px"><input name="price" type="text"></span>
         </li>
         <li>
-            <span class="col1">부품번호: </span>
-            <span class="col2"><input name="partnum" type="text"></span>
+            <span class="col1"style="font-size : 17px">부품번호 : </span>
+            <span class="col2"style="font-size : 15px"><input name="partnum" type="text"></span>
         </li>
         <li id="text_area">   
-            <span class="col1">내용 : </span>
-            <span class="col2">
+            <span class="col1"style="font-size : 17px">내용 : </span>
+            <span class="col2"style="font-size : 15px">
                <textarea name="content"></textarea>
            </span>
        </li>
        <li>
-         <span class="col1"> 첨부 파일</span>
-         <span class="col2"><input type="file" name="upfile"></span></li>
+         <span class="col1"style="font-size : 17px"> 첨부 파일 :</span>
+         <span class="col2"style="font-size : 15px"><input type="file" name="upfile"
+                                
+                                   ></span></li>
      </ul>
      <ul class="buttons">
-        <li><button type="button" onclick="check_input()">완료</button></li>
-        <li><button type="button" onclick="location.href='board_list.php'">목록</button></li>
+        <li><button type="button" onclick="check_input()"
+                      style=" width: 72px;
+                       font-size:15px;
+                       font-family: 'Nanum Gothic';
+                       color: #d4d5d9;
+                       line-height: 25px;
+                       text-align: center;
+                       background: #333f50;
+                       border: solid 1px#333f50;
+                       border-radius: 12px;">완료</button></li>
+        <li><button type="button" onclick="location.href='board_list.php'"
+                      style=" width: 72px;
+                       font-size:15px;
+                       font-family: 'Nanum Gothic';
+                       color: #d4d5d9;
+                       line-height: 25px;
+                       text-align: center;
+                       background: #333f50;
+                       border: solid 1px#333f50;
+                       border-radius: 12px;">목록</button></li>
     </ul>
 </form>
 </div> <!-- board_box -->

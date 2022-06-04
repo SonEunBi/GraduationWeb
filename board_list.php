@@ -13,7 +13,7 @@
 <header>
 		<?php include "reply_idx.php";?>
 		<?php include "header.php";?>
-		<br><br><br><br><br><br><br>
+		<br><br><br><br>
 	</header>  
 <body> 
 	
@@ -26,7 +26,7 @@
 	</div>
 	<div id="board_box">
 		<h3>
-			가격 공유
+			<span style='font-size:25px' style='color:#7c7c7d'style='text-align:center'>견적 공유
 		</h3>
 		<ul id="board_list">
 			<li>
@@ -144,12 +144,30 @@
 	?>
 </ul> <!-- page -->	    	
 <ul class="buttons">
-	<li><button onclick="location.href='board_list.php'">목록</button></li>
+	<li><button onclick="location.href='board_list.php'"
+                style=" width: 72px;
+                       font-size:15px;
+                       font-family: 'Nanum Gothic';
+                       color: #d4d5d9;
+                       line-height: 25px;
+                       text-align: center;
+                       background: #333f50;
+                       border: solid 1px#333f50;
+                       border-radius: 12px;">목록</button></li>
 	<li>
 		<?php 
 		if($userid) {
 			?>
-			<button onclick="location.href='board_form.php'">글쓰기</button>
+			<button onclick="location.href='board_form.php'"
+                      style=" width: 72px;
+                       font-size:15px;
+                       font-family: 'Nanum Gothic';
+                       color: #d4d5d9;
+                       line-height: 25px;
+                       text-align: center;
+                       background: #333f50;
+                       border: solid 1px#333f50;
+                       border-radius: 12px;">글쓰기</button>
 			<?php
 		} else {
 			?>

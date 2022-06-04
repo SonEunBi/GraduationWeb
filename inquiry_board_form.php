@@ -121,8 +121,26 @@
 						<span class="col2"><input type="file" name="upfile"></span></li>
 					</ul>
 					<ul class="buttons">
-						<li><button type="button" onclick="check_input()">완료</button></li>
-						<li><button type="button" onclick="location.href='inquiry_board_list.php'">목록</button></li>
+						<li><button type="button" onclick="check_input()"
+                                      style=" width: 72px;
+                                               font-size:15px;
+                                               font-family: 'Nanum Gothic';
+                                               color: #d4d5d9;
+                                               line-height: 25px;
+                                               text-align: center;
+                                               background: #333f50;
+                                               border: solid 1px#333f50;
+                                               border-radius: 12px;">완료</button></li>
+						<li><button type="button" onclick="location.href='inquiry_board_list.php'"
+                                      style=" width: 72px;
+                                               font-size:15px;
+                                               font-family: 'Nanum Gothic';
+                                               color: #d4d5d9;
+                                               line-height: 25px;
+                                               text-align: center;
+                                               background: #333f50;
+                                               border: solid 1px#333f50;
+                                               border-radius: 12px;">목록</button></li>
 					</ul>
 				</form>
 			</div> <!-- board_box -->

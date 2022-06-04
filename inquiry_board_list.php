@@ -14,12 +14,9 @@
 <header>
 		<?php include "reply_idx.php";?>
 		<?php include "header.php";?>
-		<br><br><br><br><br><br><br>
 	</header>  
 <body> 
 	
-
-
 
 	</div>
 	<div id="board_box">
@@ -142,12 +139,30 @@
 	?>
 </ul> <!-- page -->	    	
 <ul class="buttons">
-	<li><button onclick="location.href='inquiry_board_list.php'">목록</button></li>
+	<li><button onclick="location.href='inquiry_board_list.php'"
+                  style=" width: 72px;
+                       font-size:15px;
+                       font-family: 'Nanum Gothic';
+                       color: #d4d5d9;
+                       line-height: 25px;
+                       text-align: center;
+                       background: #333f50;
+                       border: solid 1px#333f50;
+                       border-radius: 12px;">목록</button></li>
 	<li>
 		<?php 
 		if($userid) {
 			?>
-			<button onclick="location.href='inquiry_board_form.php'">글쓰기</button>
+			<button onclick="location.href='inquiry_board_form.php'"
+                      style=" width: 72px;
+                       font-size:15px;
+                       font-family: 'Nanum Gothic';
+                       color: #d4d5d9;
+                       line-height: 25px;
+                       text-align: center;
+                       background: #333f50;
+                       border: solid 1px#333f50;
+                       border-radius: 12px;">글쓰기</button>
 			<?php
 		} else {
 			?>
