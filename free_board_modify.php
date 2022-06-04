@@ -5,8 +5,8 @@
     $subject = $_POST["subject"];
     $content = $_POST["content"];
           
-    $con = mysqli_connect("localhost", "user1", "12345", "sample");
-    $sql = "update board set subject='$subject', content='$content' ";
+    $con = mysqli_connect("localhost", "user1", "12345", "userdata");
+    $sql = "update freeboard set subject='$subject', content='$content' ";
     $sql .= " where num=$num";
     mysqli_query($con, $sql);
 
@@ -14,7 +14,7 @@
 
     echo "
 	      <script>
-	          location.href = 'board_list.php?page=$page';
+	          location.href = 'free_board_list.php?page=$page';
 	      </script>
 	  ";
 ?>

@@ -43,7 +43,7 @@
 					<span class="col4">등록일</span>
 				</li>
 <?php
-	$con = mysqli_connect("localhost", "user1", "12345", "sample");
+	$con = mysqli_connect("localhost", "user1", "12345", "userdata");
 
 	if ($mode=="send")
 		$sql = "select * from message where send_id='$userid' order by num desc";

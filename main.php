@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="container align-center">
-                        <h1><strong>차량 견적 비교 시스템 플랫폼</strong><br>더 빠르고, 더 편리하게</h1><br><br><br><br><br><br>
+                        <h1><strong>차량 견적 비교 시스템 커뮤니티</strong><br>더 빠르고, 더 편리하게</h1><br><br><br><br><br><br>
                     </div>
                 </div>
                 <div class="box-padding-big" id="features">
@@ -31,7 +31,7 @@
                         <div class="row">
                             <div class = "col-sm-5 info-big">
                                 <h2>가장 빠른 견적 비교<br>
-                                    <strong>빠르고 편리한<br> 견적 시스템을 제공합니다</strong></h2><br>
+                                    <strong>빠르고 편리한<br> 가격 비교 시스템을 제공합니다</strong></h2><br>
                                     <h5>'부셔진 차'는 쉬운 방법으로 사용자에게 다가갑니다. 사진 한 장의 업로드를 통해 부서진 부분을 정확하게 파악하세요.</h5>
                                 </div>
                                 <div class="col-sm-7">

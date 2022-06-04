@@ -24,7 +24,7 @@ h3 {
    }
    else
    {
-      $con = mysqli_connect("localhost", "user1", "12345", "sample");
+      $con = mysqli_connect("localhost", "user1", "12345", "userdata");
 
  
       $sql = "select * from members where id='$id'";

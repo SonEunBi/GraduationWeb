@@ -7,14 +7,20 @@
 	<link rel="stylesheet" type="text/css" href="./css/board.css">
 	<style type="text/css">
 		.re_ct {font-weight:bold; color:blue;}
+		button{
+			cursor: pointer;       
+			height: 30px; 
+			background-color: #3A3845; color: whitesmoke; 
+			border :hidden;
+		}
 	</style>
 	
 </head>
 <header>
-		<?php include "reply_idx.php";?>
-		<?php include "header.php";?>
-		<br><br><br><br><br><br><br>
-	</header>  
+	<?php include "reply_idx.php";?>
+	<?php include "header.php";?>
+	<br><br><br><br><br>
+</header>  
 <body> 
 	
 	

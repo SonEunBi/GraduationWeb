@@ -8,24 +8,28 @@
 	<link rel="stylesheet" type="text/css" href="./css/board.css">
 	<style type="text/css">
 		.re_ct {font-weight:bold; color:blue;}
+			button{
+			 cursor: pointer;       
+    height: 30px; 
+    background-color: #3A3845; color: whitesmoke; 
+    border :hidden;
+		}
 	</style>
 	
 </head>
 <header>
+	<br>
 		<?php include "reply_idx.php";?>
 		<?php include "header.php";?>
-		<br><br><br><br><br><br><br>
+	
 	</header>  
 <body> 
 	
 
 
 
-	</div>
 	<div id="board_box">
-		<h3>
-			가격 문의
-					</h3>
+		<h3>			가격 문의					</h3>
 		<ul id="board_list">
 			<li>
 				<span class="col1">번호</span>

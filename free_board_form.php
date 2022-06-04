@@ -43,7 +43,9 @@
 				<li>
 					<span class="col1">제목 : </span>
 					<span class="col2"><input name="subject" type="text"></span>
-				</li>	    	
+				</li>	  
+				 
+       
 				<li id="text_area">	
 					<span class="col1">내용 : </span>
 					<span class="col2">
@@ -52,7 +54,8 @@
 				</li>
 				<li>
 					<span class="col1"> 첨부 파일</span>
-					<span class="col2"><input type="file" name="upfile"></span>
+					<span class="col2"><input type="file" name="upfile"onchange="readURL(this);"></span><br/>
+       </li><img id="preview" style="margin-left:15%" />
 				</li>
 			</ul>
 			<ul class="buttons">

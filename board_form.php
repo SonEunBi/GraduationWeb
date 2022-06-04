@@ -6,23 +6,35 @@
     <link rel="stylesheet" type="text/css" href="./css/common.css">
     <link rel="stylesheet" type="text/css" href="./css/board.css">
     <script type="text/javascript" src="/js/share_board.js"></script>
-
-<script type="text/javascript">
-   function check_input() {
-      if (!document.board_form.subject.value)
-      {
-        alert("제목을 입력하세요!");
-        document.board_form.subject.focus();
-        return;
+    <script type="text/javascript">
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('preview').src = e.target.result;
+                };
+                reader.readAsDataURL(input.files[0]);
+            } else {
+                document.getElementById('preview').src = "";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+       function check_input() {
+          if (!document.board_form.subject.value)
+          {
+            alert("제목을 입력하세요!");
+            document.board_form.subject.focus();
+            return;
+        }
+        if (!document.board_form.content.value)
+        {
+            alert("내용을 입력하세요!");    
+            document.board_form.content.focus();
+            return;
+        }
+        document.board_form.submit();
     }
-    if (!document.board_form.content.value)
-    {
-        alert("내용을 입력하세요!");    
-        document.board_form.content.focus();
-        return;
-    }
-    document.board_form.submit();
-}
 
 </script>
 </head>
@@ -51,8 +63,7 @@
         <span class="col2"><input name="subject" type="text"></span>
     </li>   
     <li>
-        <span class="col1">부품 : </span>
-
+        <span class="col1">부위 : </span>
         <span class="col2">
             <select name="partname" >
 
@@ -77,101 +88,101 @@
                 <option value='etc'>기타</option>
 
             </select>
-        </span>
-    </li>   
-    <li>
-        <span class="col1">차종 : </span>
-        <span class="col2">
-            <select name="cartype" >
-
-                <option>-선택-</option>
-
-                <option value='sedan'>세단</option>
-
-                <option value='coupe'>쿠페</option>
-
-                <option value='wagon'>왜건</option>
-
-                <option value='suv'>SUV</option>
-
-                <option value='convertible'>컨버터블</option>
-
-                <option value='hatchback'>해치백</option>
-
-                <option value='limousine'>리무진</option>
-
-                <option value='van'>밴</option>
-
-                <option value='pickuptrunk'>픽업트럭</option>
-
-            </select>
-        </span>
-    </li>   
-
-    <li>
-        <span class="col1">장소: </span>
-        <span class="col2">
-            <form name="location">
-<!-- onChange="cat1_change(this.value,h_area2)" -->
-                <select name="location"  >
+        </li>   
+        <li>
+            <span class="col1">차종 : </span>
+            <span class="col2">
+                <select name="cartype" >
 
                     <option>-선택-</option>
 
-                    <option value='1'>서울</option>
+                    <option value='Sedan'>세단</option>
 
-                    <option value='2'>부산</option>
+                    <option value='Coupe'>쿠페</option>
 
-                    <option value='3'>대구</option>
+                    <option value='Wagon'>왜건</option>
 
-                    <option value='4'>인천</option>
+                    <option value='SUV'>SUV</option>
 
-                    <option value='5'>광주</option>
+                    <option value='Convertible'>컨버터블</option>
 
-                    <option value='6'>대전</option>
+                    <option value='Hatchback'>해치백</option>
 
-                    <option value='7'>울산</option>
+                    <option value='Limousine'>리무진</option>
 
-                    <option value='8'>강원</option>
+                    <option value='Van'>밴</option>
 
-                    <option value='9'>경기</option>
-
-                    <option value='10'>경남</option>
-
-                    <option value='11'>경북</option>
-
-                    <option value='12'>전남</option>
-
-                    <option value='13'>전북</option>
-
-                    <option value='14'>제주</option>
-
-                    <option value='15'>충남</option>
-
-                    <option value='16'>충북</option>
+                    <option value='Pickuptrunk'>픽업트럭</option>
 
                 </select>
-
-              
             </span>
-        </li>
+
+        </li>   
 
         <li>
-            <span class="col1">가격: </span>
-            <span class="col2"><input name="price" type="text"></span>
-        </li>
-        <li>
-            <span class="col1">부품번호: </span>
-            <span class="col2"><input name="partnum" type="text"></span>
-        </li>
-        <li id="text_area">   
-            <span class="col1">내용 : </span>
+            <span class="col1">장소: </span>
             <span class="col2">
-               <textarea name="content"></textarea>
-           </span>
-       </li>
-       <li>
-         <span class="col1"> 첨부 파일</span>
-         <span class="col2"><input type="file" name="upfile"></span></li>
+                <form name="location">
+                    <!-- onChange="cat1_change(this.value,h_area2)" -->
+                    <select name="location"  >
+
+                        <option>-선택-</option>
+
+                        <option value='1'>서울</option>
+
+                        <option value='2'>부산</option>
+
+                        <option value='3'>대구</option>
+
+                        <option value='4'>인천</option>
+
+                        <option value='5'>광주</option>
+
+                        <option value='6'>대전</option>
+
+                        <option value='7'>울산</option>
+
+                        <option value='8'>강원</option>
+
+                        <option value='9'>경기</option>
+
+                        <option value='10'>경남</option>
+
+                        <option value='11'>경북</option>
+
+                        <option value='12'>전남</option>
+
+                        <option value='13'>전북</option>
+
+                        <option value='14'>제주</option>
+
+                        <option value='15'>충남</option>
+
+                        <option value='16'>충북</option>
+
+                    </select>
+
+
+                </span>
+            </li>
+            <li>
+                <span class="col1">가격: </span>
+                <span class="col2"><input name="price" type="text"></span>
+            </li>
+            <li>
+                <span class="col1">부품번호: </span>
+                <span class="col2"><input name="partnum" type="text"></span>
+            </li>
+            <li id="text_area">   
+                <span class="col1">내용 : </span>
+                <span class="col2">
+                   <textarea name="content"></textarea>
+               </span>
+           </li>
+           <li>
+             <span class="col1"> 첨부 파일</span>
+             <span class="col2"><input type="file" name="upfile"onchange="readURL(this);"></span><br/>
+         </li><img id="preview" style="margin-left:15%" />
      </ul>
      <ul class="buttons">
         <li><button type="button" onclick="check_input()">완료</button></li>

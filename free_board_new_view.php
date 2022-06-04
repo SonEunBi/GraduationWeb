@@ -24,7 +24,7 @@
         $page  = $_GET["page"];
 
         $con = mysqli_connect("localhost", "user1", "12345", "userdata");
-        $sql = "select * from board where num=$num";
+        $sql = "select * from freeboard where num=$num";
         $result = mysqli_query($con, $sql);
 
         $row = mysqli_fetch_array($result);
@@ -46,7 +46,7 @@
         $content = str_replace("\n", "<br>", $content);
 
         $new_hit = $hit + 1;
-        $sql = "update board set hit=$new_hit where num=$num";   
+        $sql = "update freeboard set hit=$new_hit where num=$num";   
         mysqli_query($con, $sql);
         ?>      
         <ul id="view_content">
@@ -117,12 +117,12 @@
                                         </li>       
                                     </ul>
                                     <ul class="buttons">
-                                        <li><button onclick="location.href='board_list.php?page=<?=$page?>'">목록</button></li>
-                                        <li><button onclick="location.href='board_modify_form.php?num=<?=$num?>&page=<?=$page?>'">수정</button></li>
-                                        <li><button onclick="location.href='board_delete.php?num=<?=$num?>&page=<?=$page?>'">삭제</button></li>
-                                        <li><button onclick="location.href='board_form.php'">글쓰기</button></li>
+                                        <li><button onclick="location.href='free_board_list.php?page=<?=$page?>'">목록</button></li>
+                                        <li><button onclick="location.href='free_board_modify_form.php?num=<?=$num?>&page=<?=$page?>'">수정</button></li>
+                                        <li><button onclick="location.href='free_board_delete.php?num=<?=$num?>&page=<?=$page?>'">삭제</button></li>
+                                        <li><button onclick="location.href='free_board_form.php'">글쓰기</button></li>
                                     </ul>
-                                    <!-- board_box -->
+                                    <!-- free_board_box -->
 
 
                                     <!--- 댓글 불러오기 -->

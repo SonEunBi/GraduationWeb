@@ -14,7 +14,6 @@ while($board = $result->fetch_array())
     $subject=str_replace($board["subject"],mb_substr($board["subject"],0,30,"utf-8")."...",$board["subject"]);
   }
 
-  $con = mysqli_connect("localhost", "user1", "12345", "userdata");
   $sql2 = "select * from reply where con_num='".$board["num"]."'";
   $sql3 = mysqli_query($con, $sql2);
 

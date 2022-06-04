@@ -4,26 +4,39 @@
 	<meta charset="utf-8">
 	<title>견적 비교 사이트</title>
 	<link rel="stylesheet" type="text/css" href="./css/common.css">
+	<link rel="stylesheet" type="text/css" href="./css/main.css">
 	<link rel="stylesheet" type="text/css" href="./css/board.css">
 	<style type="text/css">
 		.re_ct {font-weight:bold; color:blue;}
+		button{
+			cursor: pointer;       
+			height: 30px; 
+			background-color: #3A3845; color: whitesmoke; 
+			border :hidden;
+
+		}
+		#search_view{
+			transition-duration: 0.4s;
+			cursor: pointer;
+			float: absolute;
+			width:480px;
+			border-radius: 32px;
+			height: 55px;
+			font-size:medium;
+		}
+		
+
 	</style>
 	
 </head>
 <header>
-		<?php include "reply_idx.php";?>
-		<?php include "header.php";?>
-		<br><br><br><br><br><br><br>
-	</header>  
+	<?php include "header.php";?>
+
+	<?php include "reply_idx.php";?>
+	<br><br><br><br><br>
+</header>  
 <body> 
-	
-	
-<div class ="col-sm-3">
-    
-    </div>
 
-
-	</div>
 	<div id="board_box">
 		<h3>
 			가격 공유
@@ -33,7 +46,7 @@
 				<span class="col1">번호</span>
 				<span class="col2">제목</span>
 				<span class="col3">글쓴이</span>
-				<span class="col4">첨부</span>
+				<span class="col4">사진</span>
 				<span class="col5">등록일</span>
 				<span class="col6">조회</span>
 			</li>
@@ -60,7 +73,7 @@
 	$start = ($page - 1) * $scale;      
 
 	$number = $total_record - $start;
-
+	
 	for ($i=$start; $i<$start+$scale && $i < $total_record; $i++)
 	{
 		mysqli_data_seek($result, $i);
@@ -73,58 +86,44 @@
 		$subject     = $row["subject"];
 		$regist_day  = $row["regist_day"];
 		$hit         = $row["hit"];
-		if ($row["file_name"])
-			$file_image = "<img src='./img/file.gif'>";
-		else
-			$file_image = " ";
+
+		$file_name    = $row["file_name"];
+		$file_type    = $row["file_type"];
+		$file_copied  = $row["file_copied"];
+		
+
 		?>
 		<li>
 			<span class="col1"><?=$number?></span>
-			<span class="col2"><a href="board_view.php?num=<?=$num?>&page=<?=$page?>"><?=$subject?>&nbsp;[<?php echo $rep_count; ?>]</a></span>
+			<span class="col2"><a href="board_view.php?num=<?=$num?>&page=<?=$page?>"><?=$subject?>&nbsp;</a></span>
 			<span class="col3"><?=$name?></span>
-			<span class="col4"><?=$file_image?></span>
+			<span class="col4"><?=$row["image"]?></span>
 			<span class="col5"><?=$regist_day?></span>
 			<span class="col6"><?=$hit?></span>
-		</li>	
+		</li>
+
 		<?php
+
+ //echo $rep_count; 
 		$number--;
 	}
 
-	$sql = "select * from board order by num desc limit 0,5";
-        // board테이블에서 num를 기준으로 내림차순해서 5개까지 표시
-	$sql1 = mysqli_query($con, $sql);
-	while($board = $sql1->fetch_array())
+	?>
+
+</ul>
+<ul id="page_num"> 	
+	<?php
+	if ($total_page>=2 && $page >= 2)	
 	{
-              //title변수에 DB에서 가져온 title을 선택
-		$title=$board["subject"]; 
-		if(strlen($title)>30)
-		{ 
-                //title이 30을 넘어서면 ...표시
-			$title=str_replace($board["subject"],mb_substr($board["subject"],0,30,"utf-8")."...",$board["subject"]);
-		}
-              //댓글 수 카운트
-
-		$sql = "select * from reply where con_num='".$board['num']."'";
-		$sql2 = mysqli_query($con, $sql);
-              //reply테이블에서 con_num이 board의 num와 같은 것을 선택
-              $rep_count = mysqli_num_rows($sql2); //num_rows로 정수형태로 출력
-          }
-          ?>
-
-      </ul>
-      <ul id="page_num"> 	
-      	<?php
-      	if ($total_page>=2 && $page >= 2)	
-      	{
-      		$new_page = $page-1;
-      		echo "<li><a href='board_list.php?page=$new_page'>◀ 이전</a> </li>";
-      	}		
-      	else 
-      		echo "<li>&nbsp;</li>";
+		$new_page = $page-1;
+		echo "<li><a href='board_list.php?page=$new_page'>◀ 이전</a> </li>";
+	}		
+	else 
+		echo "<li>&nbsp;</li>";
 
    	// 게시판 목록 하단에 페이지 링크 번호 출력
-      	for ($i=1; $i<=$total_page; $i++)
-      	{
+	for ($i=1; $i<=$total_page; $i++)
+	{
 		if ($page == $i)     // 현재 페이지 번호 링크 안함
 		{
 			echo "<li><b> $i </b></li>";
@@ -141,6 +140,7 @@
 	}
 	else 
 		echo "<li>&nbsp;</li>";
+	// mysqli_close();
 	?>
 </ul> <!-- page -->	    	
 <ul class="buttons">
@@ -160,7 +160,22 @@
 	</li>
 </ul>
 </div> <!-- board_box -->
-</section> 
+<br><br>
+<center>
+<div id="search_box" style="padding-left:400px">
+	<form action="board_search_list.php" method="get">
+		<select name="catgo" style="height:30px;float: left;">
+			<option value="subject">제목</option>
+			<option value="name">글쓴이</option>
+			<option value="num">글번호</option>
+		</select>
+		<input type="text" name="search" size="80" required="required" style="float: left; height:30px;" />
+		<button  style="float: left; height:30px; width: 70px;">검색</button>
+	</form></div>
+</div>
+</center>
+
+
 <footer>
 	<?php include "footer.php";?>
 </footer>

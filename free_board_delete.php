@@ -4,7 +4,7 @@
     $page   = $_GET["page"];
 
     $con = mysqli_connect("localhost", "user1", "12345", "userdata");
-    $sql = "select * from board where num = $num";
+    $sql = "select * from freeboard where num = $num";
     $result = mysqli_query($con, $sql);
     $row = mysqli_fetch_array($result);
 
@@ -16,13 +16,13 @@
 		unlink($file_path);
     }
 
-    $sql = "delete from board where num = $num";
+    $sql = "delete from freeboard where num = $num";
     mysqli_query($con, $sql);
     mysqli_close($con);
 
     echo "
 	     <script>
-	         location.href = 'board_list.php?page=$page';
+	         location.href = 'free_board_list.php?page=$page';
 	     </script>
 	   ";
 ?>

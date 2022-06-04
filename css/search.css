@@ -1,32 +1,43 @@
-  h3{margin-bottom: -20px;  	
-  	text-align: center;  
+
+/*old-one*/
+  h3{margin-bottom: -20px;      
+    text-align: center;  
   }
   table{    
-  	margin-left: 100px; 
+    margin-left: 0%; 
   }
-  #search_btn{  	
-  	cursor: pointer;  	
-  	width:40px;  	
-  	height: 37px;  
+  #search_btn{      
+    cursor: pointer;    
+    width:7%;     
+    height: 30px; 
+    background-color: #3A3845; color: whitesmoke; margin-left: 70%;
+    border :hidden;
+  }
+#search_btn2{      
+    cursor: pointer;    
+    width:7%;    
+    height: 30px; 
+    background-color: #3A3845; color: whitesmoke; margin-left: 70%;
+    border :hidden;
   }
   #search_view{ 
-  	transition-duration: 0.4s;
-  	cursor: pointer;
-  	float: absolute;
-  	width:480px;
-  	height: 35px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+    float: absolute;
+    width:500px;
+    height: 35px;
   }
   .footerSc{
-  	bottom: 0;
-  	width:100%;
-  	margin-top: 390px;
+    bottom: 0;
+    width:100%;
+    margin-top: 390px;
   }
   .wrapper{
-  	background:#444; color:#fff; margin:5px 0 10px; padding:5px 10px; 
-  	line-height:25px; border-radius:5px; box-shadow: 1px 1px 2px gray;
+    background:#444; color:#fff; margin:5px 0 10px; padding:5px 10px; 
+    line-height:25px; border-radius:5px; box-shadow: 1px 1px 2px gray;
   }
   /*search_db*/
-#search_case1{border-top-left-radius: 25px; border-bottom-left-radius: 25px;	margin-right: -4px; }
-#search_case2{border-top-right-radius: 25px; border-bottom-right-radius: 25px;margin-left: -3px;}
+#search_case1{border-top-left-radius: 25px; border-bottom-left-radius: 25px;    margin-right: -4px; font-size: 17px;}
+#search_case2{border-top-right-radius: 25px; border-bottom-right-radius: 25px;margin-left: -3px;font-size: 17px;}
 #btn_group button{border: 2px solid #444; background-color: #ffffff; color: #000000; padding: 15px 50px 15px 50px; font-weight: bolder;}
 #btn_group button:hover{color: white; background-color: #444; padding: 15px 50px 15px 50px; }

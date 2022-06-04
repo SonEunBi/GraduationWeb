@@ -53,6 +53,7 @@ function fileDropDown(){
         }else{
             alert("ERROR");
         }
+        document.querySelector(".resultTable").style.display = "";
     });
 }
 
@@ -164,5 +165,32 @@ function uploadFile(){
         }
         document.querySelector('#input_file').files = dataTransfer.files;
         document.querySelector('#uploadForm').submit();
+    }
+}
+
+// 결과출력함수
+function showResult(){
+    var allRet = document.querySelectorAll("#allRet");
+    var damagedRet = document.querySelectorAll("#damagedRet");
+    allRet[0].style.display = "";
+    allRet[1].style.display = "none";
+    damagedRet[0].style.display = "none";
+    damagedRet[1].style.display = "";
+}
+// 파손 이미지만 출력 함수
+function showDamagedResult(){
+    var allRet = document.querySelectorAll("#allRet");
+    var damagedRet = document.querySelectorAll("#damagedRet");
+    allRet[0].style.display = "none";
+    allRet[1].style.display = "";
+    damagedRet[0].style.display = "";
+    damagedRet[1].style.display = "none";
+}
+
+function initTable(){
+    var nodeList = document.querySelectorAll(".resultTable");
+    var i;
+    for(i=0; i<nodeList.length; i++){
+        nodeList[i].style.display = "none";
     }
 }

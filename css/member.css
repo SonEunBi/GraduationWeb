@@ -2,15 +2,17 @@
 #main_content { position: relative; width: 1000px; height: 400px; margin: 0 auto; }
 
 /* 가입 양식 폼 */
-#join_box {	width: 600px;	margin: 0 auto; }
-#join_box h2 { 	border-bottom: solid 1px #dddddd; padding-top: 50px; }
-#join_box .col1 { float: left;	width: 110px; margin-top: 4px; }
-#join_box .col2 { float: left;	width: 400px; }
+#join_box { width: 680px; height: 300px; margin: 0 auto; }
+#join_box h2 { padding-left: 280px; padding-bottom: 10px;  border-bottom: solid 2px #02021c; padding-top: 50px; }
+#join_box .col1 {font-size: 17px; padding-left: 15px;   color : #7c7c7d;  float: left;   width: 110px; margin-top: 6px; }
+#join_box .col2 { padding-left: 5px;   float: left;   width: 400px; margin-top: 6px; }
 #join_box .col3 { float: left; }
-#join_box .form input { width: 390px;	height: 22px; }
+#join_box .button {  font-size: 10px; backface-visibility: hidden;  position: relative; cursor: pointer;  display: inline-block;  white-space: nowrap;
+ border-color: #7c7c7c;  }
+#join_box .form input { width: 390px;   height: 28px; }
 #join_box .form { height: 38px; }
-#join_box .id {	margin-top: 20px; }
+#join_box .id {margin-top: 20px; }
 #join_box input[name=email1] { width: 100px; }
-#join_box input[name=email2] { width: 275px; }
-#join_box .bottom_line { margin-top: 10px;	border-bottom: solid 1px #cccccc; }
-#join_box .buttons { text-align: right;	margin: 20px 100px 0 0; }
+#join_box input[name=email2] { padding-left: 2px; width: 275px; }
+#join_box .bottom_line { border-top-left-radius: 5px; border-bottom-left-radius: 5px; margin-top: 10px; border-bottom: solid 2px #02021c; }
+#join_box .buttons { text-align: right;   margin: 20px 100px 0 0; }

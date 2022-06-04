@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <title>비교 견적 사이트</title>
 <link rel="stylesheet" type="text/css" href="./css/common.css">
-<link rel="stylesheet" type="text/css" href="./css/board.css">
+<link rel="stylesheet" type="text/css" href="./css/board.css"><link rel="stylesheet" type="text/css" href="./css/quote.css">
 </head>
 <body> 
 <header>
