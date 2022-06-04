@@ -29,6 +29,7 @@
 	<section>
 
         </div>
+    <br><br><br><br>
         <div id="main_content">
       		<div id="join_box">
           	<form  name="member_form" method="post" action="member_modify.php?id=<?=$userid?>">
@@ -72,9 +73,27 @@
 			       	<div class="clear"></div>
 			       	<div class="bottom_line"> </div>
 			       	<div class="buttons">
-	                	<img style="cursor:pointer" src="./img/button_save.gif" onclick="check_input()">&nbsp;
-                  		<img id="reset_button" style="cursor:pointer" src="./img/button_reset.gif"
-                  			onclick="reset_form()">
+	                	<button type="button" onclick="check_input()"style="
+                              width: 72px;
+                              font-size:14px;
+                              font-family: 'Nanum Gothic';
+                              color: #d4d5d9;
+                              line-height: 25px;
+                              text-align: center;
+                              background: #333f50;
+                              border: solid 1px#333f50;
+                              border-radius: 12px;">저장하기</button>&nbsp;
+                  		<button type="button" onclick="reset_form()"style=" 
+                              width: 72px;
+                              font-size:14px;
+                              font-family: 'Nanum Gothic';
+                              color: #d4d5d9;
+                              line-height: 25px;
+                              text-align: center;
+                              background: #333f50;
+                              border: solid 1px#333f50;
+                              border-radius: 12px;">취소하기</button> 
+
 	           		</div>
            	</form>
         	</div> <!-- join_box -->

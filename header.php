@@ -19,14 +19,14 @@
 
     <body>
         <div class ="menu-top-home-fixed">
-            <div class="container">
-                <div class="col-xs-3">
+            <div class="container" >
+                <div class="col-xs-3" >
                 </div>
-                <div class = "col-xs-9 align-right">
+                <div class = "col-xs-9 align-center" style=" height:70px; ">
                     <ul class="menu-links"> 
                         <li><a class="logo" href="index.php"><img src="img/logo1.png"></a></li>
-                        <li><a href="board_list.php">가격 공유</a></li>
-                        <li><a href="inquiry_board_list.php">가격 문의</a></li>
+                        <li><a href="board_list.php">견적 공유</a></li>
+                        <li><a href="inquiry_board_list.php">견적 문의</a></li>
                         <li><a href="free_board_list.php">자유게시판</a></li>        
                         <li><a href="search_db.php">데이터 분석 결과</a></li>
                         <li><a href="quote_personal.php">개인 비교</a></li>

@@ -14,6 +14,7 @@
         <?php include "header.php";?>
     </header>  
     <section>
+        <br><br><br>
     </div>
     <div id="board_box">
         <h3 class="title">
