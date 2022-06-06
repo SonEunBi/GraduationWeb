@@ -13,7 +13,6 @@
 			height: 30px; 
 			background-color: #3A3845; color: whitesmoke; 
 			border :hidden;
-
 		}
 		#search_view{
 			transition-duration: 0.4s;
@@ -86,7 +85,7 @@
 		$subject     = $row["subject"];
 		$regist_day  = $row["regist_day"];
 		$hit         = $row["hit"];
-
+		
 		$file_name    = $row["file_name"];
 		$file_type    = $row["file_type"];
 		$file_copied  = $row["file_copied"];

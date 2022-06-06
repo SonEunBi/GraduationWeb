@@ -37,7 +37,7 @@
 	$num  = $_GET["num"];
 	$page = $_GET["page"];
 	
-	$con = mysqli_connect("localhost", "user1", "12345", "sample");
+	$con = mysqli_connect("localhost", "user1", "12345", "userdata");
 	$sql = "select * from freeboard where num=$num";
 	$result = mysqli_query($con, $sql);
 	$row = mysqli_fetch_array($result);

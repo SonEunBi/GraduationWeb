@@ -50,22 +50,14 @@
 		$content = str_replace("\n", "<br>", $content);
 
 		$new_hit = $hit + 1;
-		$sql = "update inquiryboard set hit=$new_hit where num=$num";   
+		$sql = "update inquiryboard set hit=$new_hit where num=$num";
 		?>		
 		<ul id="view_content">
 			<li>
 				<span class="col1"><b>제목 | </b> <?=$subject?></span>
 				<span class="col2"><?=$name?> | <?=$regist_day?></span>
 			</li>
-			<li>
-				<span class="col1" style="float:left; margin-bottom: 15px; width:450px"><b>수리 유형 | </b> <?=$repairtype?></span>
-				<span class="col3" style="float:center;"><b>부품명 | </b> <?=$partname?></span>
-				<span class="col5" style="float:right;"><b>지역 | </b> <?= $v_location[$location-1]?></span>
-			</li>
 			
-			<li>
-				<span class="col3"><b>가격 | </b><?=$price?></span>
-			</li>
 			<li><br>&nbsp;&nbsp;
 				<span class="col6">&nbsp;&nbsp;<b>내용 | </b></span>
 <div id = "content_box" style="border: 3px solid #d3d3d3; margin-left: 80px; width: 900px; heigh: 100px; text-align: left; padding-left: 15px; background-color:white; border-radius: 15px;"><br>
