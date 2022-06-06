@@ -26,8 +26,6 @@
 <body> 
 	
 
-
-
 	<div id="board_box">
 		<h3>			견적 문의					</h3>
 		<ul id="board_list">
@@ -82,7 +80,7 @@
 		?>
 		<li>
 			<span class="col1"><?=$number?></span>
-			<span class="col2"><a href="inquiry_board_view.php?num=<?=$num?>&page=<?=$page?>"><?=$subject?>&nbsp;[<?php echo $rep_count; ?>]</a></span>
+			<span class="col2"><a href="inquiry_board_view.php?num=<?=$num?>&page=<?=$page?>"><?=$subject?></a></span>
 			<span class="col3"><?=$name?></span>
 			<span class="col4"><?=$file_image?></span>
 			<span class="col5"><?=$regist_day?></span>
