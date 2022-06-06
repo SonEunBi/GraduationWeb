@@ -92,26 +92,7 @@
 		$number--;
 	}
 
-	$sql = "select * from freeboard order by num desc limit 0,5";
-        // board테이블에서 num를 기준으로 내림차순해서 5개까지 표시
-	$sql1 = mysqli_query($con, $sql);
-	while($board = $sql1->fetch_array())
-	{
-              //title변수에 DB에서 가져온 title을 선택
-		$title=$board["subject"]; 
-		if(strlen($title)>30)
-		{ 
-                //title이 30을 넘어서면 ...표시
-			$title=str_replace($board["subject"],mb_substr($board["subject"],0,30,"utf-8")."...",$board["subject"]);
-		}
-              //댓글 수 카운트
-
-		$sql = "select * from reply where con_num='".$board['num']."'";
-		$sql2 = mysqli_query($con, $sql);
-              //reply테이블에서 con_num이 board의 num와 같은 것을 선택
-              $rep_count = mysqli_num_rows($sql2); //num_rows로 정수형태로 출력
-          }
-          ?>
+?>
 
       </ul>
       <ul id="page_num"> 	

@@ -75,7 +75,7 @@
 	
 	$con = mysqli_connect("localhost", "user1", "12345", "userdata");
 
-	$sql = "insert into freeboard (id, name, subject, content, regist_day, hit,  file_name, file_type, file_copied) ";
+	$sql = "insert into freeboard (id, name, subject, content, regist_day, hit, file_name, file_type, file_copied) ";
 	$sql .= "values('$userid', '$username', '$subject', '$content', '$regist_day', 0, ";
 	$sql .= "'$upfile_name', '$upfile_type', '$copied_file_name')";
 	mysqli_query($con, $sql);  // $sql 에 저장된 명령 실행
