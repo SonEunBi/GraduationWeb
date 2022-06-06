@@ -1,24 +1,24 @@
 <?php
 $con = mysqli_connect("localhost", "user1", "12345", "userdata");
-            $sql="select partname, count(partname) as count 
-            from board 
-            group by partname";
+$sql="select partname, count(partname) as count 
+from board 
+group by partname";
 
-            $result = mysqli_query($con, $sql);
-            $row=mysqli_fetch_array($result);
-            while($row=mysqli_fetch_assoc($result)){
-                $data_array[] = ($row);
-            }
-            $chart = json_encode($data_array);
+$result = mysqli_query($con, $sql);
+$row=mysqli_fetch_array($result);
+while($row=mysqli_fetch_assoc($result)){
+    $data_array[] = ($row);
+}
+$chart = json_encode($data_array);
 
-            ?>
+?>
 
-        <script type="text/javascript">
+<script type="text/javascript">
 
-            google.charts.load('current', {'packages': ['corechart']});
-            google.charts.setOnLoadCallback(drawVisualization);
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawVisualization);
 
-            function drawVisualization() {
+    function drawVisualization() {
     var chart_array = <?php echo $chart; ?>; //차트에 넣는 데이터
     var header = ['partname', 'count']; //헤더 종류에 대한 배열
     var row = "";
@@ -43,9 +43,9 @@ var options = {
     //     },
     //     seriesType: 'pies',
     //     showRowNumber: 'false'
-    };
-    var chart = new google.visualization.PieChart(document.getElementById('chartOfMine'));
-    chart.draw(data, options);
+};
+var chart = new google.visualization.PieChart(document.getElementById('chartOfMine'));
+chart.draw(data, options);
 }
 
 </script>

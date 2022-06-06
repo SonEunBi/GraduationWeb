@@ -29,7 +29,7 @@
 
 
 	<div id="board_box">
-		<h3>			가격 문의					</h3>
+		<h3>			견적 문의					</h3>
 		<ul id="board_list">
 			<li>
 				<span class="col1">번호</span>

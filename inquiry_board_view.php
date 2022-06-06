@@ -13,7 +13,7 @@
 <section>
 	 <!-- <div id="main_img_bar">   -->
 <!--        <center><img src="./img/main4.png"></center> -->
-    </div>
+    </div><br><br><br>
    	<div id="board_box">
 	    <h3 class="title">
 			게시판 > 내용보기

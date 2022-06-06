@@ -16,7 +16,7 @@
 		<?php include "header.php";?>
 	</header>  
 	<section>
-	</div>
+	</div><br><br><br>
 	<div id="board_box">
 		<h3 class="title">
 			견적공유 > 내용보기
@@ -44,6 +44,7 @@
 		$file_type    = $row["file_type"];
 		$file_copied  = $row["file_copied"];
 		$hit          = $row["hit"];
+	$repairtype =$row['repairtype'];
 
 		$content = str_replace(" ", "&nbsp;", $content);
 		$content = str_replace("\n", "<br>", $content);
@@ -53,67 +54,45 @@
 		?>		
 		<ul id="view_content">
 			<li>
-				<span class="col1"><b>제목 :</b> <?=$subject?></span>
+				<span class="col1"><b>제목 | </b> <?=$subject?></span>
 				<span class="col2"><?=$name?> | <?=$regist_day?></span>
-				<li>
-					<b>내용 :</b><br><br>
-					<table style="border: 2px solid #444; border-radius: 40px/ 40px; padding-left:10px;" id="wrapper">
-						<tr height=auto; style=" border:1px solid #444; text-align: center; padding-top:5px; padding-left:10px; "><th width= 100>부품</th>
-							<td width =700> &nbsp;
-								<span name ="partname"><b> <?=$partname?>&nbsp;</b></label>&emsp;
-								</td>
-							</span>
-						</td>
-					</tr>
+			</li>
+			<li>
+				<span class="col1" style="float:left; margin-bottom: 15px; width:450px"><b>수리 유형 | </b> <?=$repairtype?></span>
+				<span class="col3" style="float:center;"><b>부품명 | </b> <?=$partname?></span>
+				<span class="col5" style="float:right;"><b>지역 | </b> <?= $v_location[$location-1]?></span>
+			</li>
+			
+			<li>
+				<span class="col3"><b>가격 | </b><?=$price?></span>
+			</li>
+			<li><br>&nbsp;&nbsp;
+				<span class="col6">&nbsp;&nbsp;<b>내용 | </b></span>
+<div id = "content_box" style="border: 3px solid #d3d3d3; margin-left: 80px; width: 900px; heigh: 100px; text-align: left; padding-left: 15px; background-color:white; border-radius: 15px;"><br>
+				<span name ="content" > <?=$content?>&nbsp;
+				</span>&emsp;
+				<br><br><br><br>
+				<br><br><br>
+			</li>
+			<li>
+				<br>&nbsp;&nbsp;
+				<span class="col6">&nbsp;&nbsp;<b>파일 | </b></span>
+				<span name ="file"><b>
+					<?php
+					if($file_name) {
+						$real_name = $file_copied;
+						$file_path = "./data/".$real_name;
+						$file_size = filesize($file_path);
 
-					<tr height=50 style="border:2px solid #444; text-align: center;"><th width= 100>가격</th>
-						<td width =100> &nbsp;
-							<span name ="price"><b> <?=$price?>&nbsp;원</b></label>&emsp;
-							</td>
-						</span>
-					</td>
-				</tr>
+						echo " $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
+						<a href='download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
+					}
 
-
-				<tr height=50 style="border:1px solid #444;text-align: center;"><th width= 100>지역</th>
-					<td width =100 style="text-align: center"><?= $v_location[$location-1]?>
-				</td>
+				?>&nbsp;</b>
 			</span>
-		</tr>
-
-
-		<tr height=50 style="border:1px solid #444;text-align: center;"><th width= 100>작성 내용</th>
-			<td width =100> &nbsp;
-				<span name ="content"><b> <?=$content?>&nbsp;</b>
-				</label>&emsp;
-
-				<tr height=50 style="border:1px solid #444;text-align: center;"><th width= 100>첨부 파일</th>
-					<td width =100> &nbsp;
-						<span name ="file"><b>
-							<?php
-							if($file_name) {
-								$real_name = $file_copied;
-								$file_path = "./data/".$real_name;
-								$file_size = filesize($file_path);
-
-								echo " $file_name ($file_size Byte) &nbsp;&nbsp;&nbsp;&nbsp;
-								<a href='download.php?num=$num&real_name=$real_name&file_name=$file_name&file_type=$file_type'>[저장]</a><br><br>";
-							}
-
-						?>&nbsp;</b>
-					</label>&emsp;
-
-				</td>
-			</span>
-		</tr>
-
-
-
-
-	</tr>
-</table>
-
-</li>
+		</li>
+		<br><br><br>
+	</li>
 
 
 </ul>
@@ -135,8 +114,6 @@
 </button>
 </li>
 </ul>
-<!-- board_box -->
-
 <!-- board_box -->
 
 

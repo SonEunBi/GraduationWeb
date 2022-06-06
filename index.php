@@ -123,34 +123,34 @@
 <div id="main_content" >
 	<h5><b>회원 데이터 통계</b></h5>
 	<div id="data_sta" style="border:1px solid #444; "></div>
-<br>
-		<div id="graph" style="width:110%; padding-left: 3%; float: left;">
-			<?php include "graph.php"?>
-			<?php  include "graph1.php"?>
-			<?php  include "graph2.php"?>
-		</div>
+	<br>
+	<div id="graph" style="width:110%; padding-left: 3%; float: left;">
+		<?php include "graph.php"?>
+		<?php  include "graph1.php"?>
+		<?php  include "graph2.php"?>
 	</div>
+</div>
 </div>
 
 
 
-	<body>
-		<script src="js/jquery-3.6.0.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
-		<header>
-			<?php include "header.php";?>
-		</header>
+<body>
+	<script src="js/jquery-3.6.0.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<header>
+		<?php include "header.php";?>
+	</header>
 
 
-		<section>
-			<?php include "main.php";?>
-		</section> 
+	<section>
+		<?php include "main.php";?>
+	</section> 
 
 
-		<footer style="margin-top:0px">
-			<?php include "footer.php";?>
-		</footer>
+	<footer style="margin-top:0px">
+		<?php include "footer.php";?>
+	</footer>
 
 
-	</body>
-	</html>
+</body>
+</html>

@@ -27,8 +27,8 @@
 		tbody td:nth-child(1) { width: 50px; }
 		tbody td:nth-child(2) { width: 150px; }
 		tbody td:nth-child(3) { width: 150px; }
-		tbody td:nth-child(3) { width: 150px; }
-
+		tbody td:nth-child(4) { width: 150px; }
+	tbody td:nth-child(5) { width: 150px; }
 
 		.footerSc{
 
@@ -56,16 +56,18 @@
 	</div>
 
 	<br><br><br>
+	
 	<center>
 		<div id="wrapper">
 			<div class="limiter">
 				<div class="wrap-table100">
 					<div class="table100">
-
+						
 						<table>
 							<thead >
 								<tr class="table100-head">
 									<th class="column1" >부품번호</th>
+									<th class="column1" >수리 유형</th>
 									<th class="column2">부품사진</th>
 									<th class="column3" >세부사항</th>
 									<th class="column4">가격</th>
@@ -74,7 +76,7 @@
 
 							<?php
 
-							if(isset($_POST['partname'] , $_POST['cartype'] , $_POST['location'])){
+							if(isset($_POST['partname'] , $_POST['cartype'] , $_POST['location'], $_POST['repairtype'] )){
 
 								for($k=0; $k<count($_POST['partname']); $k++){
 									$rspartname = $_POST['partname'][$k];
@@ -86,7 +88,9 @@
 								for($i=0; $i<count($_POST['cartype']); $i++){
 									$rscartype = $_POST['cartype'][$i];
 								}
-
+								for($m=0; $m<count($_POST['repairtype']); $m++){
+									$rsrepairtype = $_POST['repairtype'][$m];
+								}
 							}
 		// $partnum = array($_POST["partnum"]);
 							else{
@@ -94,7 +98,7 @@
 								echo "<br>   <br>";
 							}
 							$con = mysqli_connect("localhost", "user1", "12345", "userdata");
-							$sql = "select * from board where location = '$rslocation' and partname = '$rspartname' and cartype = '$rscartype'";
+							$sql = "select * from board where location = '$rslocation' and partname = '$rspartname' and cartype = '$rscartype' and repairtype = '$rsrepairtype'";
 
 							$result = mysqli_query($con, $sql);
 							$row=mysqli_fetch_array($result);
@@ -124,6 +128,7 @@
   			$cartype    = $row["cartype"];
   			$location   = $row["location"];
   			$price    = $row["price"];
+  			$repairtype    = $row["repairtype"];
   			?>
 
 
@@ -131,18 +136,17 @@
   			<tbody align="center">
   				<tr>
   					<td rowspan="3"class="column1" align="center"><?= $partnum ?></td>
-  					<td rowspan="3" class="column2"><img src="img/<?=$image[$imgnum]?>" width="250px" height="130px"></td>
-  					<td class="column3" style="text-align: left"><b>부품명&nbsp;:&emsp;</b><?= $partname ?></td>
+  						<td rowspan="3" class="column2"><?= $repairtype ?></td>
+  					<td rowspan="3" class="column3"><img src="img/<?=$image[$imgnum]?>" width="300px" height="130px"></td>
+  					<td class="column4" style="text-align: left"><b>부품명&nbsp; &emsp;</b><?= $partname ?></td>
   					<td rowspan="3"class="column4"  style="text-align: center"><?= number_format($price)?>원</td>
   				</tr>
   				<tr>
-
   					<td class="column3"style="text-align: left"><b>차종&nbsp;:&emsp;</b><?= $cartype ?></td>
-
   				</tr>
   				<tr style="border-bottom:1px solid #444">
 
-  					<td class="column3"style="text-align: left"><b>지역&nbsp;:&emsp;</b><?= $v_location[$rslocation]?></td>
+  					<td class="column3"style="text-align: left"><b>지역&nbsp;:&emsp;</b><?= $v_location[$rslocation-1]?></td>
   					
   				</tr>
   				<?php
@@ -152,15 +156,16 @@
   </table>
 </div>
 </center>
+
 <?php
   	// $con = mysqli_connect("localhost", "user1", "12345", "carinfo");
   	// $sql = "select round(avg(price),0) as avg 
   	// from usercar 
   	// where location = '$rslocation' and cartype='$rscartype' and partname='$rspartname'";
 
-$sql = "select round(avg(price),0) as avg 
+$sql = "select round(avg(price),0) as avg, max(price) as max, min(price) as min, max(price)-min(price) as diff
 from board 
-where location = '$rslocation' and cartype='$rscartype' and partname='$rspartname'";
+where location = '$rslocation' and cartype='$rscartype' and partname='$rspartname' and repairtype = '$rsrepairtype'";
 
 $result = mysqli_query($con, $sql);
 $row=mysqli_fetch_array($result);
@@ -204,10 +209,12 @@ $row=mysqli_fetch_array($result);
 					<table  id = "avg_norm" style="display:">
 						<thead >
 							<tr class="table100-head" style="text-align: center;">
-								<th class="column1" >부품번호</th>
+								<th class="column1" >부품<br>번호</th>
+								<th class="column2">수리 유형</th>
 								<th class="column2">부품사진</th>
 								<th class="column3" >세부사항</th>
 								<th class="column4">가격</th>
+								<th class="column5">최소값 / 최대값</th>
 							</tr>
 						</thead>
 
@@ -222,16 +229,20 @@ $row=mysqli_fetch_array($result);
 						<tbody align="center">
 							<tr>
 								<td rowspan="3"class="column1" align="center"><?= $partnum ?></td>
-								<td rowspan="3" class="column2"><img src="img/<?=$image[$imgnum]?>" width="250px" height="130px"></td>
+								<td rowspan="3" class="column2"><?= $repairtype ?></td>
+								<td rowspan="3" class="column3"><img src="img/<?=$image[$imgnum]?>" width="250px" height="130px"></td>
 								<td class="column3"style="text-align: left"><b>부품명&nbsp;:&emsp;</b><?= $partname ?></td>
 
 							</tr>
 							<tr>
 								<td class="column3" style="text-align: left"><b>차종&nbsp;:&emsp;</b><?= $cartype ?></td>
 								<td class="column4"><?= number_format($row['avg'])?>원</td>
+								<td class="column5"><?= number_format($row['min'])?>원 / <?= number_format($row['max'])?>원</td>
 							</tr>
 							<tr>
 								<td class="column3" style="text-align: left"><b>지역&nbsp;:&emsp;</b><?= $v_location[$rslocation-1]?></td>
+								<td></td>
+								<td class="column3" style="font-size:13px">(가격 편차 : <?= number_format($row['diff'])?>원)</td>
 							</tr>
 						</tbody>
 					</table>
@@ -242,20 +253,21 @@ $row=mysqli_fetch_array($result);
 						<thead >
 							<tr class="table100-head" style="text-align: center;">
 
-								<th class="column1" >부품번호</th>
-								<th class="column2">부품사진</th>
+								<th class="column1" >-</th>
 								<th class="column3" >세부사항</th>
 								<th class="column4">개수</th>
 								<th class="column5">평균 시세</th>
+								<th class="column6">최소값 / 최대값</th>
 							</tr>
 						</thead>
 
 
 						<?php
-	
 
-					$sql="select partname, count(price) as count, avg(price) as avg from board where regist_day > date_add(now(),interval -7 day)
-					group by partname asc";
+
+						$sql="select partname, count(price) as count, avg(price) as avg, max(price) as max, min(price) as min, max(price)-min(price) as diff
+						from board where regist_day > date_add(now(),interval -7 day)
+						group by partname asc";
 
 						$result = mysqli_query($con, $sql);
 						$row=mysqli_fetch_array($result);
@@ -286,43 +298,53 @@ else{
 
 		<tbody align="center">
 			<tr>
-				<td rowspan="3"class="column1" align="center"><?= $partnum ?></td>
-				<td rowspan="3" class="column2"><img src="img/<?=$image[$imgnum]?>" width="250px" height="130px"></td>
+				<td rowspan="3"class="column1" align="center"><?=$i+1 ?></td>
 				<td class="column3"style="text-align: left"><b>부품명&nbsp;:&emsp;</b><?= $partname ?></td>
 			</tr>
 			<tr>
 				<td class="column3" style="text-align: left"><b>차종&nbsp;:&emsp;</b><?= $cartype ?></td>
-					<td class="column4"><?= number_format($row['count'])?>개</td>
-				<td class="column5"><?= number_format($row['avg'])?>원</td>
+				<td class="column4"><?= number_format($count)?>개</td>
+				<td class="column5"><?= number_format($avg)?>원</td>
+				<td class="column6"><?= number_format($row['min'])?> ~ <?= number_format($row['max'])?>원</td>
 			</tr>
 			<tr>
 				<td class="column3" style="text-align: left"><b>지역&nbsp;:&emsp;</b><?= $v_location[$rslocation-1]?></td>
+				<td></td>
+				<td></td>
+				<td class="column3" style="font-size:13px">(가격 편차 : <?= number_format($row['diff'])?>원)</td>
+
+
 			</tr>
-		</tbody>
-	</table>
 
-
-
-	<table  id = "avg_loc" style="display:none">
-		<thead >
-			<tr class="table100-head" style="text-align: center;">
-
-				<th class="column1" >부품번호</th>
-				<th class="column2">부품사진</th>
-				<th class="column3" >세부사항</th>
-					<th class="column4">개수</th>
-				<th class="column5">가격</th>
-			</tr>
 		<?php } }?>
+	</tbody>
+</table>
+
+
+
+
+<table id = "avg_loc" style="display:none">
+	<thead >
+		<tr class="table100-head" style="text-align: center;">
+
+			<th class="column1" >-</th>
+			<th class="column3" >세부사항</th>
+			<th class="column4">개수</th>
+			<th class="column5">평균 시세</th>
+			<th class="column6">최소값 / 최대값</th>
+		</tr>
 	</thead>
 
 
 	<?php
-		$sql="select partname, count(price) as count, avg(price) as avg from board where regist_day > date_add(now(),interval -7 day)
-					group by partname";
+	
 
-						$result = mysqli_query($con, $sql);
-						$row=mysqli_fetch_array($result);
+	$sql="select partname, count(price) as count, avg(price) as avg, max(price) as max, min(price) as min, max(price)-min(price) as diff
+	from board where regist_day > date_add(now(),interval -31 day)
+	group by partname asc";
+
+	$result = mysqli_query($con, $sql);
+	$row=mysqli_fetch_array($result);
 
 $total_record = mysqli_num_rows($result); // 전체 글 수
 $num_match = mysqli_num_rows($result);
@@ -347,24 +369,32 @@ else{
 		$count = $row["count"];		
 
 		?>
-	<tbody align="center">
-		<tr>
-			<td rowspan="3"class="column1" align="center"><?= $partnum ?></td>
-			<td rowspan="3" class="column2"><img src="img/<?=$image[$imgnum]?>" width="250px" height="130px"></td>
-			<td class="column3"style="text-align: left"><b>부품명&nbsp;:&emsp;</b><?= $partname ?></td>
 
-		</tr>
-		<tr>
-			<td class="column3" style="text-align: left"><b>차종&nbsp;:&emsp;</b><?= $cartype ?></td>
-			<td class="column4"><?= number_format($row['avg'])?>다</td>
-		</tr>
-		<tr>
-			<td class="column3" style="text-align: left"><b>지역&nbsp;:&emsp;</b><?= $v_location[$rslocation-1]?></td>
-		</tr>
-	<?php } } ?>
+		<tbody align="center">
+			<tr>
+				<td rowspan="3"class="column1" align="center"><?=$i+1 ?></td>
+				<td class="column3"style="text-align: left"><b>부품명&nbsp;:&emsp;</b><?= $partname ?></td>
+			</tr>
+			<tr>
+				<td class="column3" style="text-align: left"><b>차종&nbsp;:&emsp;</b><?= $cartype ?></td>
+				<td class="column4"><?= number_format($count)?>개</td>
+				<td class="column5"><?= number_format($avg)?>원</td>
+				<td class="column6"><?= number_format($row['min'])?> ~ <?= number_format($row['max'])?>원</td>
+			</tr>
+			<tr>
+				<td class="column3" style="text-align: left"><b>지역&nbsp;:&emsp;</b><?= $v_location[$rslocation-1]?></td>
+				<td></td>
+				<td></td>
+				<td class="column3" style="font-size:13px">(가격 편차 : <?= number_format($row['diff'])?>원)</td>
+
+
+			</tr>
+
+		<?php } }?>
 	</tbody>
-
 </table>
+</div>
+</div></div>
 </div>
 </center>
 <?php

@@ -62,14 +62,25 @@
         <span class="col1">제목 : </span>
         <span class="col2"><input name="subject" type="text"></span>
     </li>   
+     <li>
+        <span class="col1">수리 유형 : </span>
+        <span class="col2">
+            <select name="repairtype" >
+
+                <option>-선택-</option>
+                
+                <option value='복원'>복원</option>
+
+                <option value='교체'>교체</option>
+
+            </select>
+        </li>   
     <li>
-        <span class="col1">부위 : </span>
+        <span class="col1">부품명 : </span>
         <span class="col2">
             <select name="partname" >
 
                 <option>-선택-</option>
-
-                <option value='all'>전체</option>
 
                 <option value='bumper'>범퍼</option>
 

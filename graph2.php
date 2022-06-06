@@ -1,33 +1,31 @@
 <?php
 $con = mysqli_connect("localhost", "user1", "12345", "userdata");
-            $sql="select location, count(location) as count 
-            from board 
-            group by location";
+$sql2="select repairtype, count(repairtype) as count 
+from board 
+group by repairtype";
 
-        $v_location=array("서울","부산","대구","인천","광주","대전","울산","강원","경기","경남","경북","전남","전북","제주","충남","충북");
+$result2 = mysqli_query($con, $sql2);
+$row=mysqli_fetch_array($result2);
+while($row=mysqli_fetch_assoc($result2)){
+    $data_array2[] = ($row);
+}
+$chart2 = json_encode($data_array2);
 
-            $result = mysqli_query($con, $sql);
-            $row=mysqli_fetch_array($result);
-            while($row=mysqli_fetch_assoc($result)){
-                $data_array2[] = ($row);
-            }
-            $chart2 = json_encode($data_array2);
+?>
 
-            ?>
+<script type="text/javascript">
 
-        <script type="text/javascript">
+    google.charts.load('current', {'packages': ['corechart']});
+    google.charts.setOnLoadCallback(drawVisualization);
 
-            google.charts.load('current', {'packages': ['corechart']});
-            google.charts.setOnLoadCallback(drawVisualization);
-
-            function drawVisualization() {
+    function drawVisualization() {
     var chart_array2 = <?php echo $chart2; ?>; //차트에 넣는 데이터
-    var header = ['location', 'count']; //헤더 종류에 대한 배열
+    var header = ['repairtype', 'count']; //헤더 종류에 대한 배열
     var row = "";
     var rows = new Array();
     jQuery.each(chart_array2, function (i, d) {
         row = [
-            d.location,    //출력되는 데이터1
+            d.repairtype,    //출력되는 데이터1
             Number(d.count)    //출력되는 데이터2
             ];
         rows.push(row);    //rows 에 row(배열)을 push 하기 
@@ -36,7 +34,7 @@ $con = mysqli_connect("localhost", "user1", "12345", "userdata");
 //data 설정 끝
 var data = google.visualization.arrayToDataTable(jsonData);
 var options = {
-    title: '전체 지역별 데이터 개수'
+    title: '전체 수리 유형별 데이터 개수'
     // vAxis: {
     //         title: '개수'    //y 축 이름
     //     },
@@ -45,10 +43,10 @@ var options = {
     //     },
     //     seriesType: 'pies',
     //     showRowNumber: 'false'
-    };
-    var chart2 = new google.visualization.PieChart(document.getElementById('chartOfMine2'));
-    chart2.draw(data, options);
+};
+var chart2 = new google.visualization.PieChart(document.getElementById('chartOfMine2'));
+chart2.draw(data, options);
 }
 
 </script>
-<div id="chartOfMine2" style="width: 350px;  border: 2px solid #444;height: 300px; float: left;"></div>
+<div id="chartOfMine2" style="width: 350px; border: 2px solid #444; height: 300px; float:left;"></div>

@@ -117,7 +117,7 @@
                     $img_path = $filename[$i];
                     ?>
                     <tr onclick="image_popup_All(this);">
-                        <td><img id="result" src=<?=$img_path?>>
+                        <td><img id="result" src=<?=$img_path?>><br>
                         <label> 파일명 : <?php echo $files['name'][$i]; ?></label>
                         <br>
                         <label> 파손 여부 :

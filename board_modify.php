@@ -5,8 +5,16 @@
     $subject = $_POST["subject"];
     $content = $_POST["content"];
           
+   $repairtype = $_POST['repairtype'];
+   $partname = $_POST['partname'];
+   $cartype = $_POST['cartype'];
+   $location = $_POST['location'];
+   $price = $_POST['price'];
     $con = mysqli_connect("localhost", "user1", "12345", "userdata");
-    $sql = "update board set subject='$subject', content='$content' ";
+    $sql = "update board set subject='$subject', repairtype='$repairtype', partname ='$partname', cartype='$cartype', location='$location', price='$price', content='$content' ";
+
+
+
     $sql .= " where num=$num";
     mysqli_query($con, $sql);
 

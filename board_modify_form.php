@@ -28,7 +28,7 @@
     <?php include "header.php";?>
 </header> 
 <section> 
-    </div>
+    </div><br><br><br>
    	<div id="board_box">
 	    <h3 id="board_title">
 	    		게시판 > 글쓰기
@@ -56,15 +56,26 @@
 	    			<span class="col1">제목 : </span>
 	    			<span class="col2"><input name="subject" type="text" value="<?=$subject?>"></span>
 	    		</li>	    	
+                 <li>
+        <span class="col1">수리 유형 : </span>
+        <span class="col2">
+            <select name="repairtype" >
+
+                <option>-선택-</option>
+                
+                <option value='복원'>복원</option>
+
+                <option value='교체'>교체</option>
+
+            </select>
+        </li>   
 	    		 <li>
-        <span class="col1">부품 : </span>
+        <span class="col1">부품명 : </span>
 
         <span class="col2">
             <select name="partname" >
 
                 <option>-선택-</option>
-
-                <option value='all'>전체</option>
 
                 <option value='bumper'>범퍼</option>
 
@@ -173,7 +184,7 @@
 			    </li>
 	    	    </ul>
 	    	<ul class="buttons">
-				<li><button type="button" onclick="check_input()">수정하기</button></li>
+				<li><button type="button" onclick="check_input()">수정<br>하기</button></li>
 				<li><button type="button" onclick="location.href='board_list.php'">목록</button></li>
 			</ul>
 	    </form>

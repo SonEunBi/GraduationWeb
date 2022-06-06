@@ -46,7 +46,7 @@
 		
 		
 
-		<h1><b>'<?php echo $search_con; ?>'&nbsp;검색결과</b></h1>
+		<h1 style="font-size: 25px"><b>'<?php echo $search_con; ?>'&nbsp;검색결과</b></h1>
 		<!-- 	<h4 style="margin-top:30px; border-bottom: 1px solid #444;"><a href="/">홈으로</a></h4> -->
 		<table class="list-table" style="border-top: 2px solid #444; text-align:center">
 			<thead style="">

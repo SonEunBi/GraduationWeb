@@ -23,7 +23,7 @@
    $subject = htmlspecialchars($subject, ENT_QUOTES);
    $content = htmlspecialchars($content, ENT_QUOTES);
 
-
+   $repairtype = $_POST['repairtype'];
    $partname = $_POST['partname'];
    $cartype = $_POST['cartype'];
    $location = $_POST['location'];
@@ -79,8 +79,8 @@
    
    $con = mysqli_connect("localhost", "user1", "12345", "userdata");
 
-   $sql = "insert into board (id, name, subject, partname, cartype, location, price, partnum, content, regist_day, hit,  file_name, file_type, file_copied) ";
-   $sql .= "values('$userid', '$username', '$subject', '$partname', '$cartype', '$location', '$price', '$partnum', '$content', '$regist_day', 0, ";
+   $sql = "insert into board (id, name, subject, repairtype, partname, cartype, location, price, partnum, content, regist_day, hit,  file_name, file_type, file_copied) ";
+   $sql .= "values('$userid', '$username', '$subject', '$repairtype', '$partname', '$cartype', '$location', '$price', '$partnum', '$content', '$regist_day', 0, ";
    $sql .= "'$upfile_name', '$upfile_type', '$copied_file_name')";
    mysqli_query($con, $sql);  // $sql 에 저장된 명령 실행
 

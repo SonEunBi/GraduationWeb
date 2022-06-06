@@ -16,9 +16,11 @@
 		font-size:14px;
 		font-family: 'Nanum Gothic';
 		color: #d4d5d9;
-		line-height: 25px;
+		line-height: 30px;
 		text-align: center;
-		margin-bottom: 10px;
+		font-weight: bold;
+		text-align: center;
+		margin-bottom: 10%;
 		background: #333f50;
 		border: solid 1px#333f50;
 		border-radius: 12px;}
@@ -31,6 +33,7 @@
 #board_list .col4 { width: 15%; }
 #board_list .col5 { width: 20%; }
 #board_list .col6 { width: 14%; }
+
 #page_num {	text-align: center;	margin: 30px 0 }
 #page_num li { display: inline; }
 /* 게시판 내용보기(board_view.php) */
@@ -38,8 +41,14 @@
 #board_box .title { margin-top: 30px; padding: 10px; border-bottom: solid 2px #000000; font-size: 20px; }
 #view_content li:nth-child(1) {	padding: 15px; border-bottom: solid 2px #aaaaaa; }
 #view_content .col2 { float: right; }
-#view_content li:nth-child(2) {	padding: 15px 15px 80px 15px; border-bottom: solid 1px #cccccc; }
-#view_content li:nth-child(3) button { padding: 5px 20px; margin: 15px 0 40px 720px; cursor: pointer; }
+#view_content .col3 { float: left; width: 400px; }
+#view_content .col4 { float: center; width: 200px; }
+#view_content .col5 { float: right; }
+#view_content .col6 { float: left; }
+#view_content li:nth-child(2) {	padding: 15px 15px 30px 15px; border-bottom: solid 2px #aaaaaa; }
+#view_content li:nth-child(3) {	padding: 15px 15px 30px 15px; border-bottom: solid 2px #aaaaaa; }
+
+#view_content li:nth-child(4) button { padding: 5px 20px; margin: 15px 0 40px 720px; cursor: pointer; }
 /*price_list*/
 #board_list .col1 { width: 80px; }
 #board_list .col2 { width: 330px; text-align: left; }

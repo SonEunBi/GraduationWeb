@@ -1,0 +1,4 @@
+tensorflow==2.8.0rc0
+numpy==1.20.3
+flask
+h5py

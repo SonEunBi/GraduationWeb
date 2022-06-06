@@ -21,8 +21,8 @@ set_time_limit(0);
   <section>
     <div id="board_box">
       <h1 id="board_title"></h1>
-<br>
-      <h3>한꺼번에 파손 비교하기</h3>
+<br><br><br>
+      <h3>파손 검출 분석 (기업용)</h3>
       <style>
 
 .footerG{
